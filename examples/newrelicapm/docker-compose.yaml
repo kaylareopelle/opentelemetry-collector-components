@@ -13,44 +13,46 @@ services:
       - "4317:4317"
       - "4318:4318"
 
-  app:
+  app: # update this to use Ruby app
     build:
-      dockerfile: DockerPetclinic
+      dockerfile: demo/Dockerfile
     environment:
+      OTEL_EXPORTER_OTLP_HEADERS: "api-key=$NEW_RELIC_API_KEY"
       OTEL_EXPORTER_OTLP_COMPRESSION: gzip
-      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      # OTEL_EXPORTER_OTLP_ENDPOINT: https://otlp.nr-data.net:4317
       # OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION: base2_exponential_bucket_histogram
       OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE: delta
       OTEL_LOGS_EXPORTER: otlp
+      OTEL_TRACES_EXPORTER: otlp
       OTEL_METRIC_EXPORT_INTERVAL: 5000
       # OTEL_SEMCONV_STABILITY_OPT_IN: http
-      OTEL_SERVICE_NAME: "OpenTelemetry-NewRelic-APM-Demo"
+      OTEL_SERVICE_NAME: "OpenTelemetry-NewRelic-APM-Demo-Ruby"
       OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT: 4095
       OTEL_TRACES_SAMPLER: "parentbased_traceidratio"
       OTEL_TRACES_SAMPLER_ARG: "0.02"
-      MYSQL_URL: "jdbc:mysql://mysqlserver/petclinic"
-    ports:
-      - "8080:8080"
+      # MYSQL_URL: "/var/run/mysqld/mysqld.soc"
+    ports: # try changing the port #s
+      - "3000:3000"
     depends_on:
-      - mysqlserver
+      # - db
       - otel-collector
+#   db:
+#     image: mysql:latest
+#     ports:
+#       - "3306:3306"
+#     cap_add:
+#       - NET_ADMIN
+#     environment:
+#       # - MYSQL_ROOT_PASSWORD=
+#       - MYSQL_ALLOW_EMPTY_PASSWORD=true
+#       - MYSQL_USER=test
+#       - MYSQL_PASSWORD=password
+#       - MYSQL_DATABASE=trilogy_test_development
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+#       - mysql_config:/etc/mysql/conf.d
 
-  mysqlserver:
-    image: mysql:8
-    ports:
-      - "3306:3306"
-    cap_add:
-      - NET_ADMIN
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=petclinic
-      - MYSQL_PASSWORD=petclinic
-      - MYSQL_DATABASE=petclinic
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - mysql_config:/etc/mysql/conf.d
-
-volumes:
-  mysql_data:
-  mysql_config:
+# volumes:
+#   mysql_data:
+#   mysql_config:

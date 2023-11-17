@@ -1,0 +1,84 @@
+# frozen_string_literal: true
+source 'https://rubygems.org'
+
+ruby '3.2.2'
+
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem 'rails', '~> 7.1.1'
+
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3', '~> 1.4'
+
+# Use the Puma web server [https://github.com/puma/puma]
+gem 'puma', '>= 5.0'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:windows, :jruby]
+
+# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
+# gem "rack-cors"
+
+group :development, :test do
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: [:mri, :windows]
+end
+
+group :development do
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
+end
+
+# gem 'opentelemetry-sdk'
+# gem 'opentelemetry-instrumentation-all'
+# gem 'opentelemetry-exporter-otlp'
+
+# OpenTelemetry Gems
+gem 'opentelemetry-api',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'api/*.gemspec'
+gem 'opentelemetry-sdk',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'sdk/*.gemspec'
+
+# Unreleased, logs-specific gems
+gem 'opentelemetry-logs-api',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'logs_api/*.gemspec'
+gem 'opentelemetry-logs-sdk',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'logs_sdk/*.gemspec'
+
+# Experimental OTel Metrics work
+gem 'opentelemetry-metrics-api',
+  git: 'https://github.com/thoughtbot/opentelemetry-ruby',
+  branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
+  glob: 'metrics_api/*.gemspec'
+gem 'opentelemetry-metrics-sdk',
+  git: 'https://github.com/thoughtbot/opentelemetry-ruby',
+  branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
+  glob: 'metrics_sdk/*.gemspec'
+
+# OTLP Exporters
+gem 'opentelemetry-exporter-otlp',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'exporter/otlp/*.gemspec'
+gem 'opentelemetry-exporter-otlp-logs',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+  branch: 'log-record-processor3',
+  glob: 'exporter/otlp-logs/*.gemspec'
+
+# Local copy of instrumentation-all includes unreleased logger instrumentation
+gem 'opentelemetry-instrumentation-all',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
+  branch: 'logger-instrumentation',
+  glob: 'instrumentation/all/*.gemspec'
+
+gem 'opentelemetry-instrumentation-logger',
+  git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
+  branch: 'logger-instrumentation',
+  glob: 'instrumentation/logger/*.gemspec'

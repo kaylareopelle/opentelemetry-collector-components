@@ -1,21 +1,15 @@
-FROM eclipse-temurin:17
+FROM ruby:3.2.2
 
-RUN apt update && apt upgrade -y && apt install -y git
+RUN apt-get update && \
+  apt-get install -y \
+  build-essential \
+  git
 
 WORKDIR /
 
-# Clone petclinic repo
-RUN git clone https://github.com/spring-projects/spring-petclinic.git
+COPY app.rb ./
 
-WORKDIR /spring-petclinic
+# EXPOSE 8080
 
-# Build the app
-RUN ./gradlew bootJar
-
-# Download the otel java agent
-RUN wget https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-
-CMD java -javaagent:opentelemetry-javaagent.jar \
-         -Dspring.profiles.active=mysql \
-         -Djava.security.egd=file:/dev/./urandom \
-         -jar build/libs/*.jar
+# RUN ruby /app.rb
+CMD ["ruby", "/app.rb"]
