@@ -33,52 +33,80 @@ end
 # gem 'opentelemetry-exporter-otlp'
 
 # OpenTelemetry Gems
-gem 'opentelemetry-api',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
-  glob: 'api/*.gemspec'
+# gem 'opentelemetry-api',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'api/*.gemspec'
+# gem 'opentelemetry-sdk',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'sdk/*.gemspec'
+
+# # Unreleased, logs-specific gems
+# gem 'opentelemetry-logs-api',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'logs_api/*.gemspec'
+# gem 'opentelemetry-logs-sdk',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'logs_sdk/*.gemspec'
+
+# # Experimental OTel Metrics work
+# gem 'opentelemetry-metrics-api',
+#   git: 'https://github.com/thoughtbot/opentelemetry-ruby',
+#   branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
+#   glob: 'metrics_api/*.gemspec'
+# gem 'opentelemetry-metrics-sdk',
+#   git: 'https://github.com/thoughtbot/opentelemetry-ruby',
+#   branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
+#   glob: 'metrics_sdk/*.gemspec'
+
+
+# # OTLP Exporters
+# gem 'opentelemetry-exporter-otlp',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'exporter/otlp/*.gemspec'
+# gem 'opentelemetry-exporter-otlp-logs',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
+#   branch: 'log-record-processor3',
+#   glob: 'exporter/otlp-logs/*.gemspec'
+
+# # Local copy of instrumentation-all includes unreleased logger instrumentation
+# gem 'opentelemetry-instrumentation-all',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
+#   branch: 'logger-instrumentation',
+#   glob: 'instrumentation/all/*.gemspec'
+
+# gem 'opentelemetry-instrumentation-logger',
+#   git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
+#   branch: 'logger-instrumentation',
+#   glob: 'instrumentation/logger/*.gemspec'
+
+
 gem 'opentelemetry-sdk',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
+  path: '/Users/kreopelle/dev/opentelemetry-ruby',
+  # git: 'https://github.com/xuan-cao-swi/opentelemetry-ruby',
+  # branch: 'otlp-metrics-exporter',
   glob: 'sdk/*.gemspec'
 
-# Unreleased, logs-specific gems
-gem 'opentelemetry-logs-api',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
-  glob: 'logs_api/*.gemspec'
-gem 'opentelemetry-logs-sdk',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
-  glob: 'logs_sdk/*.gemspec'
-
-# Experimental OTel Metrics work
 gem 'opentelemetry-metrics-api',
-  git: 'https://github.com/thoughtbot/opentelemetry-ruby',
-  branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
-  glob: 'metrics_api/*.gemspec'
+  path: '/Users/kreopelle/dev/opentelemetry-ruby/metrics_api'
+  # git: 'https://github.com/xuan-cao-swi/opentelemetry-ruby',
+  # branch: 'otlp-metrics-exporter',
+  # glob: 'metrics_api/*.gemspec'
+
 gem 'opentelemetry-metrics-sdk',
-  git: 'https://github.com/thoughtbot/opentelemetry-ruby',
-  branch: 'elias/adjust-existing-metrics-sdk-code-to-match-api',
-  glob: 'metrics_sdk/*.gemspec'
+  path: '/Users/kreopelle/dev/opentelemetry-ruby/metrics_sdk'
+  # git: 'https://github.com/xuan-cao-swi/opentelemetry-ruby',
+  # branch: 'otlp-metrics-exporter',
+  # glob: 'metrics_sdk/*.gemspec'
 
-# OTLP Exporters
 gem 'opentelemetry-exporter-otlp',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
-  glob: 'exporter/otlp/*.gemspec'
-gem 'opentelemetry-exporter-otlp-logs',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby',
-  branch: 'log-record-processor3',
-  glob: 'exporter/otlp-logs/*.gemspec'
+  path: '/Users/kreopelle/dev/opentelemetry-ruby/exporter/otlp'
+  # git: 'https://github.com/xuan-cao-swi/opentelemetry-ruby',
+  # branch: 'otlp-metrics-exporter',
+  # glob: 'exporter/otlp/*.gemspec'
 
-# Local copy of instrumentation-all includes unreleased logger instrumentation
-gem 'opentelemetry-instrumentation-all',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
-  branch: 'logger-instrumentation',
-  glob: 'instrumentation/all/*.gemspec'
-
-gem 'opentelemetry-instrumentation-logger',
-  git: 'https://github.com/kaylareopelle/opentelemetry-ruby-contrib',
-  branch: 'logger-instrumentation',
-  glob: 'instrumentation/logger/*.gemspec'
+gem 'opentelemetry-instrumentation-all'

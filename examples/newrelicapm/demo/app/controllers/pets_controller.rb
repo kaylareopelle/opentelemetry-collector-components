@@ -4,6 +4,11 @@ class PetsController < ApplicationController
   # GET /pets
   def index
     @pets = Pet.all
+    HISTOGRAM.record(123, attributes: {'foo' => 'bar'})
+    HISTOGRAM.record(123, attributes: {'foo' => 'baz'})
+    HISTOGRAM.record(100, attributes: {'foo' => 'bar'})
+    OpenTelemetry.meter_provider.metric_readers.each(&:pull)
+    OpenTelemetry.meter_provider.shutdown
 
     render json: @pets
   end
